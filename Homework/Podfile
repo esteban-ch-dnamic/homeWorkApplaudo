@@ -1,0 +1,12 @@
+platform :ios, '7.0'
+
+target 'Homework' do
+
+pod "AFNetworking", "~> 2.0"
+
+end
+
+target 'HomeworkTests' do
+
+end
+
