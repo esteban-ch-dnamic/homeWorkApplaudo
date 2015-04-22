@@ -17,7 +17,8 @@
 		599561F91AE5A4840036DD03 /* HomeworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 599561F81AE5A4840036DD03 /* HomeworkTests.m */; };
 		599562061AE5AE220036DD03 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 599562051AE5AE220036DD03 /* Model.m */; };
 		5995620A1AE5B57A0036DD03 /* VenuesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 599562091AE5B57A0036DD03 /* VenuesAPI.m */; };
-		5995620E1AE5B6BE0036DD03 /* VenueVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5995620D1AE5B6BE0036DD03 /* VenueVO.m */; };
+		59A18DEB1AE8148D002CE43D /* VenueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A18DEA1AE8148D002CE43D /* VenueModel.m */; };
+		59A18DEE1AE81806002CE43D /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A18DED1AE81806002CE43D /* ScheduleModel.m */; };
 		D4FBDF55EB1BC038E1483A6B /* libPods-Homework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FF379CE36B2D8BA9CA4A8C /* libPods-Homework.a */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +52,10 @@
 		599562051AE5AE220036DD03 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = Model/Model.m; sourceTree = "<group>"; };
 		599562081AE5B57A0036DD03 /* VenuesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenuesAPI.h; path = API/VenuesAPI.h; sourceTree = "<group>"; };
 		599562091AE5B57A0036DD03 /* VenuesAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenuesAPI.m; path = API/VenuesAPI.m; sourceTree = "<group>"; };
-		5995620C1AE5B6BE0036DD03 /* VenueVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenueVO.h; path = VO/VenueVO.h; sourceTree = "<group>"; };
-		5995620D1AE5B6BE0036DD03 /* VenueVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenueVO.m; path = VO/VenueVO.m; sourceTree = "<group>"; };
+		59A18DE91AE8148D002CE43D /* VenueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenueModel.h; path = Model/VenueModel.h; sourceTree = "<group>"; };
+		59A18DEA1AE8148D002CE43D /* VenueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenueModel.m; path = Model/VenueModel.m; sourceTree = "<group>"; };
+		59A18DEC1AE81806002CE43D /* ScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleModel.h; path = Model/ScheduleModel.h; sourceTree = "<group>"; };
+		59A18DED1AE81806002CE43D /* ScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleModel.m; path = Model/ScheduleModel.m; sourceTree = "<group>"; };
 		754A3C3CDFCDD478401F51A8 /* Pods-Homework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Homework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Homework/Pods-Homework.debug.xcconfig"; sourceTree = "<group>"; };
 		99F795AC41C31B34575DD902 /* Pods-Homework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Homework.release.xcconfig"; path = "Pods/Target Support Files/Pods-Homework/Pods-Homework.release.xcconfig"; sourceTree = "<group>"; };
 		D1FF379CE36B2D8BA9CA4A8C /* libPods-Homework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Homework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +103,6 @@
 		599561D81AE5A4830036DD03 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
-				5995620B1AE5B69B0036DD03 /* VO */,
 				599562071AE5B5020036DD03 /* API */,
 				599562031AE5AE070036DD03 /* Model */,
 				599562021AE5ADEE0036DD03 /* Controllers */,
@@ -156,6 +158,10 @@
 			children = (
 				599562041AE5AE220036DD03 /* Model.h */,
 				599562051AE5AE220036DD03 /* Model.m */,
+				59A18DE91AE8148D002CE43D /* VenueModel.h */,
+				59A18DEA1AE8148D002CE43D /* VenueModel.m */,
+				59A18DEC1AE81806002CE43D /* ScheduleModel.h */,
+				59A18DED1AE81806002CE43D /* ScheduleModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,15 +173,6 @@
 				599562091AE5B57A0036DD03 /* VenuesAPI.m */,
 			);
 			name = API;
-			sourceTree = "<group>";
-		};
-		5995620B1AE5B69B0036DD03 /* VO */ = {
-			isa = PBXGroup;
-			children = (
-				5995620C1AE5B6BE0036DD03 /* VenueVO.h */,
-				5995620D1AE5B6BE0036DD03 /* VenueVO.m */,
-			);
-			name = VO;
 			sourceTree = "<group>";
 		};
 		DAF3AC0FDDE3EC78672C448F /* Frameworks */ = {
@@ -333,9 +330,10 @@
 				599561DF1AE5A4830036DD03 /* AppDelegate.m in Sources */,
 				599561E21AE5A4830036DD03 /* MasterViewController.m in Sources */,
 				599561DC1AE5A4830036DD03 /* main.m in Sources */,
+				59A18DEB1AE8148D002CE43D /* VenueModel.m in Sources */,
 				599561E51AE5A4830036DD03 /* DetailViewController.m in Sources */,
 				5995620A1AE5B57A0036DD03 /* VenuesAPI.m in Sources */,
-				5995620E1AE5B6BE0036DD03 /* VenueVO.m in Sources */,
+				59A18DEE1AE81806002CE43D /* ScheduleModel.m in Sources */,
 				599562061AE5AE220036DD03 /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

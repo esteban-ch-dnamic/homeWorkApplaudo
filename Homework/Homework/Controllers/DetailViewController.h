@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VenueVO.h"
+#import "VenueModel.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) VenueVO *venueVO;
+@property (strong, nonatomic) VenueModel *venueModel;
 
 @end
 

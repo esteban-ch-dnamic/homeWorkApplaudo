@@ -7,8 +7,8 @@
 //
 
 #import "VenuesAPI.h"
-#import "VenueVO.h"
 #import "Model.h"
+#import "VenueModel.h"
 
 #import <AFNetworking/AFNetworking.h>
 
@@ -29,20 +29,7 @@ const NSString *BASE_URL = @"https://s3.amazonaws.com/jon-hancock-phunware/";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
      [manager GET:[NSString stringWithFormat:@"%@nflapi-static.json",BASE_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         [Model sharedInstance].venuesArray = [[NSMutableArray alloc]init];
-         NSArray *responseArray = responseObject;
-         for (int i = 0; i < responseArray.count; i++) {
-             VenueVO *venueVO = [[VenueVO alloc]init];
-             [venueVO setName:[responseArray[i] objectForKey:@"name"]];
-             [venueVO setZip:[responseArray[i] objectForKey:@"zip"]];
-             [venueVO setState:[responseArray[i] objectForKey:@"state"]];
-             [venueVO setAddress:[responseArray[i] objectForKey:@"address"]];
-             [venueVO setCity:[responseArray[i] objectForKey:@"city"]];
-             [venueVO setImageUrl:[responseArray[i] objectForKey:@"image_url"]];
-             [venueVO setSchedule:[responseArray[i] objectForKey:@"schedule"]];
-             
-             [[Model sharedInstance].venuesArray addObject:venueVO];
-         }
+         [Model sharedInstance].venuesArray = [VenueModel arrayOfModelsFromDictionaries:responseObject error:nil];
          completionHandler(YES,nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

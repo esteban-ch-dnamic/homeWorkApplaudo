@@ -24,33 +24,33 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setVenueVO:(VenueVO *)newVenueVO {
-    if (_venueVO != newVenueVO) {
-        _venueVO = newVenueVO;
+- (void)setVenueModel:(VenueModel *)newVenueModel {
+    if (_venueModel != newVenueModel) {
+        _venueModel = newVenueModel;
         [self configureView];
     }
 }
 
 /*!
- *  @brief Configures the view with the specificied values in the instance variable VenueVO
+ *  @brief Configures the view with the specificied values in the instance variable VenueModel
  */
 - (void)configureView {
-    if (self.venueVO) {
+    if (self.venueModel) {
         [self.activityIndicator startAnimating];
-        [self.name setText:self.venueVO.name];
+        [self.name setText:self.venueModel.name];
         
-        NSString *address = [NSString stringWithFormat:@"%@\n%@, %@ %@",self.venueVO.address, self.venueVO.city, self.venueVO.state, self.venueVO.zip];
+        NSString *address = [NSString stringWithFormat:@"%@\n%@, %@ %@",self.venueModel.address, self.venueModel.city, self.venueModel.state, self.venueModel.zip];
         [self.address setText:address];
         
         NSString *scheduleString = @"";
-        for (NSDictionary *day in self.venueVO.schedule) {
-            scheduleString = [NSString stringWithFormat:@"%@\n%@",scheduleString,[self scheduleFromStartDate:[day objectForKey:@"start_date"] endDate:[day objectForKey:@"end_date"]]];
+        for (ScheduleModel *schedule in self.venueModel.schedule) {
+            scheduleString = [NSString stringWithFormat:@"%@\n%@",scheduleString,[self scheduleFromStartDate:schedule.start_date endDate:schedule.end_date]];
         }
         
         [self.schedule setText:scheduleString];
         
-        if (self.venueVO.imageUrl != nil && ![self.venueVO.imageUrl isEqualToString:@""]) {
-            NSURLRequest *imageUrlRequest = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:self.venueVO.imageUrl]];
+        if (self.venueModel.image_url != nil && ![self.venueModel.image_url isEqualToString:@""]) {
+            NSURLRequest *imageUrlRequest = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:self.venueModel.image_url]];
             [self.imageView setImageWithURLRequest:imageUrlRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                 [self.activityIndicator stopAnimating];
                 self.imageView.image = image;

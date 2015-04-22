@@ -10,8 +10,8 @@
 #import "DetailViewController.h"
 
 #import "VenuesAPI.h"
-#import "VenueVO.h"
 #import "Model.h"
+#import "VenueModel.h"
 
 @interface MasterViewController ()
 
@@ -38,7 +38,7 @@
     [[VenuesAPI sharedInstance]requestVenuesWithCompletionHandler:^(BOOL succes, NSError *error) {
         if (succes) {
             [self.tableView reloadData];
-            [self.detailViewController setVenueVO:[Model sharedInstance].venuesArray[0]];
+            [self.detailViewController setVenueModel:[Model sharedInstance].venuesArray[0]];
         }else{
             [[[UIAlertView alloc]initWithTitle:@"Ooppsss...!" message:@"We couldn't load the venues" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
         }
@@ -55,9 +55,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        VenueVO *venueVO = [Model sharedInstance].venuesArray[indexPath.row];
+        VenueModel *venueModel = [Model sharedInstance].venuesArray[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setVenueVO:venueVO];
+        [controller setVenueModel:venueModel];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -75,9 +75,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    VenueVO *venueVO = [Model sharedInstance].venuesArray[indexPath.row];
-    cell.textLabel.text = venueVO.name;
-    cell.detailTextLabel.text = venueVO.address;
+    VenueModel *venueModel = [Model sharedInstance].venuesArray[indexPath.row];
+    cell.textLabel.text = venueModel.name;
+    cell.detailTextLabel.text = venueModel.address;
     return cell;
 }
 
