@@ -12,7 +12,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-const NSString *BASE_URL = @"https://s3.amazonaws.com/jon-hancock-phunware/";
+const NSString *kBaseUrl = @"https://s3.amazonaws.com/jon-hancock-phunware/";
 
 @implementation VenuesAPI
 
@@ -28,7 +28,7 @@ const NSString *BASE_URL = @"https://s3.amazonaws.com/jon-hancock-phunware/";
 - (void) requestVenuesWithCompletionHandler:(VenueAPICompletionHandler)completionHandler{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-     [manager GET:[NSString stringWithFormat:@"%@nflapi-static.json",BASE_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     [manager GET:[NSString stringWithFormat:@"%@nflapi-static.json",kBaseUrl] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
          
          [Model sharedInstance].venuesArray = [VenueModel arrayOfModelsFromDictionaries:responseObject error:nil];
          
