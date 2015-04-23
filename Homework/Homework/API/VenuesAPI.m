@@ -29,7 +29,15 @@ const NSString *BASE_URL = @"https://s3.amazonaws.com/jon-hancock-phunware/";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
      [manager GET:[NSString stringWithFormat:@"%@nflapi-static.json",BASE_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         
          [Model sharedInstance].venuesArray = [VenueModel arrayOfModelsFromDictionaries:responseObject error:nil];
+         
+         //Sort venues by name ascending
+         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                      ascending:YES];
+         NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+         [Model sharedInstance].venuesArray = (NSMutableArray*)[[Model sharedInstance].venuesArray sortedArrayUsingDescriptors:sortDescriptors];
+         
          completionHandler(YES,nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
